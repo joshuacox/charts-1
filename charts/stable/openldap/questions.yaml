@@ -146,6 +146,25 @@ questions:
             type: string
             required: true
             default: ""
+  - variable: customLdifFiles
+    group: "custom ldif files"
+    label: "custom ldif"
+    schema:
+      additional_attrs: true
+      type: dict
+      attrs:
+        - variable: 51-custom.ldif
+          label: "custom ldif"
+          schema:
+            type: string
+            required: false
+            default: ""
+        - variable: 52-custom.ldif
+          label: "custom ldif 2"
+          schema:
+            type: string
+            required: false
+            default: ""
 # Include{containerConfig}
 # Include{serviceRoot}
         - variable: main

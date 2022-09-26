@@ -76,6 +76,22 @@ env:
   LDAP_SSL_HELPER_PREFIX: "ldap"
   LDAP_BASE_DN: ""
 
+customLdifFiles:
+  50-argon2-module.ldif: |-
+    # Add in argon2 hashing support
+    dn: cn=module{0},cn=config
+    changetype: modify
+    add: olcModuleLoad
+    olcModuleLoad: {0}pw-argon2
+  50-argon2-default.ldif: |-
+    dn: olcDatabase={-1}frontend,cn=config
+    changetype: modify
+    add: olcPasswordHash
+    olcPasswordHash: {ARGON2}
+  51-custom.ldif: ''
+  52-custom.ldif: ''
+
+
 replication:
   enabled: false
   # Enter the name of your cluster, defaults to "cluster.local"
